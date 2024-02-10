@@ -1,12 +1,11 @@
 import pygame
 
+from game import Game
+from mario import Mario
+
 WINDOW_SIZE = WINDOW_WIDTH, WINDOW_HEIGHT = 800, 600
 FPS = 60
 BACKGROUND_COLOR = "#004400"
-
-
-class Mario:
-    pass
 
 
 class Circle:
@@ -19,21 +18,14 @@ class Circle:
         pygame.draw.circle(screen, (255, 0, 0), (int(self.x_pos), 200), 20)
 
 
-class Game:
-    def __init__(self, circle):
-        self.circle = circle
-
-    def render(self, screen):
-        self.circle.render(screen)
-
-
 def main():
     pygame.init()
     pygame.display.set_caption('Mario')
     screen = pygame.display.set_mode(WINDOW_SIZE)
 
     circle = Circle()
-    game = Game(circle)
+    mario = Mario(100, 100)
+    game = Game(circle, mario)
 
     running = True
     clock = pygame.time.Clock()
